@@ -19,6 +19,10 @@ module.exports = () => {
     },
     plugins: [
       new MiniCSSExtractPlugin(),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'index.html',
+      })
     ],
 
     module: {
@@ -28,7 +32,11 @@ module.exports = () => {
           use: [MiniCSSExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: /\.m?js$/i,
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
           use: {
             loader: 'babel-loader',
