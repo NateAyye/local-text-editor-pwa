@@ -22,6 +22,10 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: 'index.html',
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       })
     ],
 
