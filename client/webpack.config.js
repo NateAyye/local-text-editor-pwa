@@ -33,7 +33,7 @@ module.exports = () => {
         inject: true,
         name: 'Text Editor',
         short_name: 'Text Editor',
-        description: 'A simple text editor',
+        description: 'A simple text editor That has javascript syntax highlighting',
         background_color: '#343434',
         theme_color: '#225ca3',
         start_url: './',
