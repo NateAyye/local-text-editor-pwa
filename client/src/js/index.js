@@ -2,6 +2,7 @@ import { Workbox } from 'workbox-window';
 import '../css/style.css';
 import './database';
 import Editor from './editor';
+const butInstall = document.getElementById('buttonInstall');
 
 const main = document.querySelector('#main');
 main.innerHTML = '';
@@ -16,6 +17,40 @@ const loadSpinner = () => {
   `;
   main.appendChild(spinner);
 };
+
+
+/***
+ * Code below was grabbed from a stackoverflow answer
+ *  Link : https://stackoverflow.com/questions/60379994/determining-pwa-installation-status
+ * 
+ */
+// Setting isInstalled variable from localStorage and checking if it is 1 if not then it is false
+let isInstalled = localStorage.getItem('pwaInstalled') === '1' || false;
+
+// Checking the windows css media rule of display-mode to detect if the app is installed
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+  // User is currently navigating on the PWA so yes it's installed
+  localStorage.setItem('pwaInstalled', '1');
+  isInstalled = true;
+} else {
+  //User is navigating in browser
+  window.addEventListener('beforeinstallprompt', () => {
+    localStorage.setItem('pwaInstalled', '0');
+    isInstalled = false;
+    //User can get an installation prompt meaning the app is not installed
+  });
+  window.addEventListener('onappinstalled', () => {
+    localStorage.setItem('pwaInstalled', '1');
+    isInstalled = true;
+  });
+}
+
+// Toggle the install button if the app is installed or not
+if (isInstalled) {
+  butInstall.classList.toggle('hidden', true);
+} else {
+  butInstall.classList.toggle('hidden', false);
+}
 
 
 const editor = new Editor();

@@ -1,3 +1,6 @@
+/*!*********************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
+  \*********************************************************************/
 /* app shell CSS */
 :root {
   --primary: #31a9e1;
@@ -35,6 +38,10 @@ h1 {
 
 .navbar-brand img {
   padding-top: 10px;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .loading-spinner {
