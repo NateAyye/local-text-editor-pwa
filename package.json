@@ -6,10 +6,10 @@
   "scripts": {
     "start:dev": "",
     "start": "",
-    "server": "",
+    "server": "cd server nodemon server.js --ignore client",
     "build": "",
     "install": "cd server && npm i && cd ../client && npm i",
-    "client": ""
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
